@@ -210,7 +210,7 @@ WHERE deptno IN(SELECT DISTINCT deptno FROM emp WHERE sal>=3000);
 # 급여를 받는 사람의 이름, 급여 출력
 
 SELECT ename, sal FROM emp
-WHERE sal > ALL(SELECT MAX(sal) FROM emp WHERE deptno=30);
+WHERE sal > (SELECT max(sal) FROM emp WHERE deptno=30);
 
 SELECT ename, sal FROM emp
 WHERE sal > ALL(SELECT sal FROM emp WHERE deptno = 30);
@@ -228,7 +228,12 @@ WHERE sal > ANY(SELECT sal FROM emp WHERE deptno = 30);
 SELECT empno, ename, sal, deptno FROM emp
 WHERE sal IN(SELECT MAX(sal) FROM emp GROUP BY deptno);
 
+SELECT empno, ename, sal, deptno FROM emp
+WHERE sal > any(SELECT MAX(sal) FROM emp GROUP BY deptno);
+
 # 직급(job)이 manager인 사람이 속한 부서의 부서번호, 부서명, 지역 출력
 SELECT deptno, dname, loc FROM dept
 WHERE deptno IN(SELECT DISTINCT deptno from emp where job = 'manager');
 
+SELECT deptno, dname, loc FROM dept
+WHERE deptno = any(SELECT DISTINCT deptno from emp where job = 'manager');
