@@ -299,6 +299,7 @@ SELECT IF(1>3, 'true', 'false');
 SELECT NULLIF(1,2);
 -- 1과 2가 동일하면 null반환, 아니면 앞에있는거 반환
 
+
 #다중 조건 분기
 SELECT case 10
 	when 1 then 'a'
@@ -316,4 +317,12 @@ SELECT ename, deptno,
 	END AS dname
 FROM emp;
 
-scott
+
+-- 날짜 형식을 문자 형태로 변환
+SELECT DATE_FORMAT(NOW(), '%Y-%m-%d');
+SELECT DATE_FORMAT(NOW(), '%Y년 %c월 %d일');
+
+-- 문자 타입이 날짜 형식으로 변환
+SELECT STR_TO_DATE('2022-08-16', '%Y-%m-%d');
+SELECT STR_TO_DATE('2022년 08월 16일', '%Y년 %m월 %d일');
+-- date 타입이기 때문에 문자열으로 출력 안됨
