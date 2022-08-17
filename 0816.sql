@@ -203,7 +203,7 @@ WHERE sal > (SELECT AVG(sal) FROM emp);
 SELECT ename, sal, deptno FROM emp
 WHERE deptno IN(SELECT DISTINCT deptno FROM emp WHERE sal>=3000);
 -- in : 메인쿼리의 조건과 서브쿼리의 조건이 하나라도 일치하면 참
--- (소속된, 000을 포함한~)
+
 
 
 # 30번 소속 사원들 중에서 급여를 가장 많이 받는 사원보다 더 많은
@@ -215,7 +215,7 @@ WHERE sal > (SELECT max(sal) FROM emp WHERE deptno=30);
 SELECT ename, sal FROM emp
 WHERE sal > ALL(SELECT sal FROM emp WHERE deptno = 30);
 -- all : 둘다 만족
--- (~면서 ~인, ~중에서)
+
 
 # 30번 소속 사원들 중에서 급여를 가장 적게 받는 사원보다 더 많은
 # 급여를 받는 사람의 이름, 급여 출력
