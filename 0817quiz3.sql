@@ -8,9 +8,10 @@ create database mydb;
 use mydb;
 
 CREATE TABLE dept(
-	DEPTNO INT,
+	DEPTNO INT NOT NULL,
 	DNAME	VARCHAR(14),
-	LOC VARCHAR(13)
+	LOC VARCHAR(13),
+	PRIMARY KEY(deptno)
 );
 -- 문제 2
 -- 만들어진 DEPT테이블에 아래의 데이터를 삽입하라
@@ -36,7 +37,8 @@ CREATE TABLE emp(
 	deptno INT,
 	DeptNAME	VARCHAR(10),
 	job VARCHAR(5),
-	sal int
+	sal INT,
+	PRIMARY KEY(deptNo)
 );
 
 -- 문제4
@@ -57,7 +59,8 @@ UPDATE emp SET sal=180 WHERE job='사원';
 
 -- 문제6
 -- emp테이블에서 '법무팀'을 삭제하세요.
-UPDATE emp SET deptname=NULL WHERE deptname='법무팀';
+-- UPDATE emp SET deptname=NULL WHERE deptname='법무팀';
+DELETE FROM emp WHERE deptname='법무팀';
 
 -- 문제 7
 -- 만들어놓은 mydb에 아래와 같이 테이블을 만들어라.
@@ -70,9 +73,9 @@ UPDATE emp SET deptname=NULL WHERE deptname='법무팀';
 
 CREATE TABLE videotbl(
 	video_id INT NOT NULL AUTO_INCREMENT,
-	constraint PRIMARY KEY videotbl(col1),
-	title	varchar(20),
-	genre	varchar(8),
+	constraint PRIMARY KEY videotbl(video_id),
+	title	varchar(20) NOT NULL,
+	genre	varchar(8) NOT NULL,
 	star varchar(10)
 );
 
