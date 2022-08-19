@@ -136,6 +136,8 @@ INSERT INTO emp01 VALUES(1000, '허준', '사원', 10), (1010, '홍길동', '사
 -- 문제95에서 1번째 해결방법을 쿼리문으로 만들어서 1010데이터 부분을 삽입하시오			
 # ALTER TABLE emp01 MODIFY COLUMN job varchar(13);
 ALTER TABLE emp01 DROP CONSTRAINT job;
+
+drop index job on emp01; 
 -- 문제97			
 -- 문제95에서 2번째 해결방법을 쿼리문으로 만들어서 1010데이터부분을 			
 -- 삽입하시오
